@@ -110,3 +110,5 @@
 /home/maul/Documents/todo/TodoAPI/obj/Debug/net8.0/TodoAPI.pdb
 /home/maul/Documents/todo/TodoAPI/obj/Debug/net8.0/TodoAPI.genruntimeconfig.cache
 /home/maul/Documents/todo/TodoAPI/obj/Debug/net8.0/ref/TodoAPI.dll
+/home/maul/Documents/todo/TodoAPI/bin/Debug/net8.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/home/maul/Documents/todo/TodoAPI/obj/Debug/net8.0/TodoAPI.sourcelink.json

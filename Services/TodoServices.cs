@@ -4,6 +4,7 @@ using TodoAPI.Interface;
 using TodoAPI.Models;
 using TodoAPI.AppDataContext;
 using TodoAPI.MappingProfiles;
+using Microsoft.EntityFrameworkCore; 
 
 namespace TodoAPI.Services
 {
@@ -12,9 +13,27 @@ namespace TodoAPI.Services
         private readonly TodoDbContext _context;
         private readonly ILogger<TodoServices> _logger;
         private readonly IMapper _mapper;
-        public Task CreateTodoAsync(CreateTodoRequest request)
+
+        public TodoServices(TodoDbContext context, ILogger<TodoServices> logger, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _context = context;
+            _logger = logger;
+            _mapper = mapper;
+        }
+        public async Task CreateTodoAsync(CreateTodoRequest request)
+        {
+            try
+            {
+                var todo = _mapper.Map<Todo>(request);
+                todo.CreatedAt = DateTime.UtcNow;
+                _context.Todos.Add(todo);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while creating the Todo item.");
+                throw new Exception("An error occurred while creating the Todo item.");
+            }
         }
 
         public Task DeleteTodoAsync(Guid id)
@@ -22,9 +41,15 @@ namespace TodoAPI.Services
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Todo>> GetAllAsync()
+        public async Task<IEnumerable<Todo>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var todo= await _context.Todos.ToListAsync();
+            if (todo == null)
+            {
+                throw new Exception(" No Todo items found");
+            }
+            return todo;
+
         }
 
         public Task<Todo> GetByIdAsync(Guid id)

@@ -2,7 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using TodoAPI.AppDataContext;
 using TodoAPI.Models;
 using TodoAPI.Middleware;
-using AutoMapper;
+using TodoAPI.Services;
+using TodoAPI.Interface;
 // using Microsoft.Extensions.Options; 
 // using Pomelo.EntityFrameworkCore.MySql.Infrastructure; 
 
@@ -26,6 +27,7 @@ builder.Services.AddExceptionHandler<GlobalExceptionHandler>(); // Add this line
 builder.Services.AddProblemDetails();  // Add this line
 // Adding of login 
 builder.Services.AddLogging();  //  Add this line
+builder.Services.AddScoped<ITodoServices, TodoServices>();
 
 var app = builder.Build();
 
