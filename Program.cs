@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TodoAPI.AppDataContext;
 using TodoAPI.Models;
+using TodoAPI.Middleware;
 using AutoMapper;
 // using Microsoft.Extensions.Options; 
 // using Pomelo.EntityFrameworkCore.MySql.Infrastructure; 
@@ -19,7 +20,12 @@ builder.Services.AddDbContext<TodoDbContext>(options =>
         new MySqlServerVersion(new Version(8, 0, 42))
     ));
 
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>(); // Add this line
+builder.Services.AddProblemDetails();  // Add this line
+// Adding of login 
+builder.Services.AddLogging();  //  Add this line
 
 var app = builder.Build();
 
@@ -36,6 +42,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseExceptionHandler();
 app.UseAuthorization();
 app.MapControllers();
 
