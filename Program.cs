@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TodoAPI.AppDataContext;
 using TodoAPI.Models;
+using AutoMapper;
 // using Microsoft.Extensions.Options; 
 // using Pomelo.EntityFrameworkCore.MySql.Infrastructure; 
 
@@ -8,10 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 builder.Services.Configure<DbSettings>(builder.Configuration.GetSection("DbSettings")); // Add this line
 
 builder.Services.AddDbContext<TodoDbContext>(options => 

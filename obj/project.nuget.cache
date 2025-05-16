@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "F1uGSmXhdkmuGxsRwM2AWroj9vn8l5VWMj3jtQK3aKiysx6mEfS2hd0HyFoxzhvCSANCOr6SDGRttnFwFab9HA==",
+  "dgSpecHash": "3Z1deRcIzGlHBPAWwjlMIStP3N4lTP/ATsqKnw5klyJN+X4ILxqxfMD2+GpxlXeRTk/RpsOp32lMkpUDjkKyVQ==",
   "success": true,
   "projectFilePath": "/home/maul/Documents/todo/TodoAPI/TodoAPI.csproj",
   "expectedPackageFiles": [
     "/home/maul/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/home/maul/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/home/maul/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/maul/.nuget/packages/microsoft.aspnetcore.openapi/8.0.16/microsoft.aspnetcore.openapi.8.0.16.nupkg.sha512",
     "/home/maul/.nuget/packages/microsoft.bcl.asyncinterfaces/6.0.0/microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
